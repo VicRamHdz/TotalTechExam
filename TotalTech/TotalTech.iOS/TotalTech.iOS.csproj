@@ -66,6 +66,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Renderers\CustomEntryRenderer.cs" />
+    <Compile Include="AkavacheSqliteLinkerOverride.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -156,11 +157,22 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations">
       <Version>2.3.6</Version>
     </PackageReference>
+    <PackageReference Include="akavache">
+      <Version>6.0.30</Version>
+    </PackageReference>
+    <PackageReference Include="akavache.core">
+      <Version>6.0.30</Version>
+    </PackageReference>
+    <PackageReference Include="akavache.sqlite3">
+      <Version>6.0.30</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\splash.png" />
     <BundleResource Include="Resources\pwd.svg" />
     <BundleResource Include="Resources\user.svg" />
+    <BundleResource Include="Resources\location.svg" />
+    <BundleResource Include="Resources\star.svg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

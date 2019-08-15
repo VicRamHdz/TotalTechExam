@@ -14,6 +14,7 @@ namespace TotalTech.Models
     {
         public string gender { get; set; }
         public Name name { get; set; }
+        public string fullname { get { return $"{name.title} {name.first} {name.last}"; } }
         public Location location { get; set; }
         public string email { get; set; }
         public Login login { get; set; }
@@ -24,6 +25,7 @@ namespace TotalTech.Models
         public Id id { get; set; }
         public Picture picture { get; set; }
         public string nat { get; set; }
+        public decimal rating { get; set; }
     }
 
     public class Name

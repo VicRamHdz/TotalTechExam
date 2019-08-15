@@ -94,6 +94,15 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations">
       <Version>2.3.6</Version>
     </PackageReference>
+    <PackageReference Include="akavache">
+      <Version>6.0.30</Version>
+    </PackageReference>
+    <PackageReference Include="akavache.core">
+      <Version>6.0.30</Version>
+    </PackageReference>
+    <PackageReference Include="akavache.sqlite3">
+      <Version>6.0.30</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -137,6 +146,14 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\user.svg">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\location.svg">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\star.svg">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

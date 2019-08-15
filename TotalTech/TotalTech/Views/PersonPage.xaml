@@ -2,8 +2,59 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="Doctors List"
+    x:Name="doctorsPage"
+    prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="TotalTech.Views.PersonPage">
     <ContentPage.Content>
+         <ListView ItemsSource="{Binding Persons}" RowHeight="100" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                   SeparatorVisibility="None" Margin="10" BackgroundColor="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="White" HasShadow="True" Padding="5" Margin="5,10">
+                            <Grid ColumnSpacing="3" Margin="0,5,0,5" x:Name="Item">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="24*"/>
+                                    <ColumnDefinition Width="63*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
 
+                                <ffimageloading:CachedImage Grid.Column="0" Aspect="AspectFit" Source = "{Binding picture.medium}"/>
+
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding fullname}" TextColor="Black" FontAttributes="Bold" FontSize="12" />
+                                    <Label Text="{Binding email}" TextColor="Green" FontSize="10" />
+                                    <StackLayout Orientation="Horizontal" Spacing="5">
+                                        <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Start" WidthRequest="10" HeightRequest="10" DownsampleToViewSize="true" Aspect="AspectFit"
+                                        Source = "location.svg">
+                                            <ffimageloadingsvg:SvgCachedImage.Transformations>
+                                                 <fftransformations:TintTransformation HexColor="#C8C8C8" EnableSolidColor="true"/>
+                                            </ffimageloadingsvg:SvgCachedImage.Transformations>
+                                        </ffimageloadingsvg:SvgCachedImage>
+                                        <Label Text="{Binding location.street}" TextColor="Gray" FontSize="10" />
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" Spacing="5" VerticalOptions="Start">
+                                     <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Start" WidthRequest="10" HeightRequest="10" DownsampleToViewSize="true" Aspect="AspectFit"
+                                        Source = "star.svg"/>
+                                    <Label Text="{Binding rating}" TextColor="Gray" FontSize="13" />
+                                </StackLayout>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.OpenRowCommand, Source={x:Reference doctorsPage}}"
+                                                          CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                    
+                </ListView>
     </ContentPage.Content>
 </ContentPage>

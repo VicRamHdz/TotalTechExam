@@ -9,7 +9,7 @@ namespace TotalTech.Services
     {
         public async Task<ResponseResult<TokenResponseResult>> Login(string email, string password)
         {
-            var endpoint = "login";
+            var endpoint = "https://reqres.in/api/login";
             var p = new
             {
                 email = email,

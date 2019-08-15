@@ -1,4 +1,5 @@
 ﻿using System;
+using Akavache;
 using FFImageLoading.Svg.Forms;
 using Prism.Unity;
 using TotalTech.Storage;
@@ -38,16 +39,21 @@ namespace TotalTech
         protected override void OnStart()
         {
             // Handle when your app starts
+            BlobCache.ApplicationName = "ContactsBlob";
+            BlobCache.EnsureInitialized();
+
         }
 
         protected override void OnSleep()
         {
             // Handle when your app sleeps
+            BlobCache.Shutdown().Wait();
         }
 
         protected override void OnResume()
         {
             // Handle when your app resumes
+            BlobCache.EnsureInitialized();
         }
     }
 }

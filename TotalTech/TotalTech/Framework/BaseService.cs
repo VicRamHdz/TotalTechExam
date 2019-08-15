@@ -27,7 +27,7 @@ namespace TotalTech.Framework
             {
                 Timeout = TimeSpan.FromSeconds(300)
             };
-            _endpointUrl = Constants.BaseApiUrl;
+            //_endpointUrl = Constants.BaseApiUrl;
         }
 
         protected async Task<ResponseResult<ReturnValue>> GetAsync<ReturnValue>(string endpoint, CancellationToken token = new CancellationToken())

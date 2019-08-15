@@ -53,6 +53,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PersonPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Persons.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Framework\BaseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\PersonService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\CacheHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
