@@ -1,16 +1,35 @@
 ﻿using System;
+using FFImageLoading.Svg.Forms;
+using Prism.Unity;
+using TotalTech.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace TotalTech
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App()
+        public App() : this(null) { }
+
+        public App(IPlatformInitializer plataInitializer = null) : base(plataInitializer)
+        {
+        }
+
+        protected override void OnInitialized()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            var ignore = new SvgCachedImage();
+            //IsFirstLoad = true;
+
+            NavigationService.NavigateAsync("LoginPage");
+        }
+
+        protected override void RegisterTypes()
+        {
+            Container.RegisterTypeForNavigation<LoginPage>();
+            Container.RegisterTypeForNavigation<PersonPage>();
+            Container.RegisterTypeForNavigation<PersonDetailPage>();
         }
 
         protected override void OnStart()
