@@ -150,6 +150,9 @@
       <Version>2.3.6</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\splash.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\TotalTech\TotalTech.projitems" Label="Shared" />
 </Project>
