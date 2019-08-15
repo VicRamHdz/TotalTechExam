@@ -1,6 +1,7 @@
 ﻿using System;
 using FFImageLoading.Svg.Forms;
 using Prism.Unity;
+using TotalTech.Storage;
 using TotalTech.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -21,8 +22,10 @@ namespace TotalTech
 
             var ignore = new SvgCachedImage();
             //IsFirstLoad = true;
-
-            NavigationService.NavigateAsync("LoginPage");
+            if (string.IsNullOrEmpty(Settings.Token))
+                NavigationService.NavigateAsync("LoginPage");
+            else
+                NavigationService.NavigateAsync("PersonPage");
         }
 
         protected override void RegisterTypes()

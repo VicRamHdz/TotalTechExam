@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Prism.Navigation;
 using Prism.Services;
 using TotalTech.Framework;
 using TotalTech.Services;
+using TotalTech.Storage;
 using TotalTech.Views;
 using Xamarin.Forms;
 
@@ -11,6 +13,8 @@ namespace TotalTech.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
+        const string pattern = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+
         public Command LoginCommand { get; set; }
 
         private string _UserName;
@@ -47,12 +51,19 @@ namespace TotalTech.ViewModels
                     await DisplayMessage("Info", "Please fill out user and password");
                     return;
                 }
+                var regex = new Regex(pattern, RegexOptions.IgnoreCase);
+                if (!regex.IsMatch(UserName))
+                {
+                    await DisplayMessage("Info", "Invalid email format");
+                    return;
+                }
 
                 BusyMessage = "Working...";
 
                 var response = await _userService.Login(UserName, Password);
                 if (response.IsSuccess)
                 {
+                    Settings.Token = response.Data.token;
                     Application.Current.MainPage = new NavigationPage(new PersonPage());
                 }
                 else

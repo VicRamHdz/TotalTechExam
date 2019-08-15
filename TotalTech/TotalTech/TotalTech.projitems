@@ -49,6 +49,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BadRequestResponseResult.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\TokenResponseResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PersonPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Persons.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Framework\BaseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -56,5 +60,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Framework\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Storage\" />
   </ItemGroup>
 </Project>
