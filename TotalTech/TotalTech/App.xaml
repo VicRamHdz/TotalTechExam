@@ -7,5 +7,9 @@
     xmlns:unity="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
     mc:Ignorable="d" x:Class="TotalTech.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <!--Colors-->
+            <Color x:Key="BaseBackgroundColor">#00f7ee</Color>
+        </ResourceDictionary>
     </Application.Resources>
 </unity:PrismApplication>

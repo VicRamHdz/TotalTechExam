@@ -41,6 +41,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\PersonDetailPage.xaml.cs">
       <DependentUpon>PersonDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Framework\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UserService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ResponseResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Framework\BaseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BadRequestResponseResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TokenResponseResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

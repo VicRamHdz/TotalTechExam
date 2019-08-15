@@ -1,5 +1,78 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TotalTech.Views.LoginPage">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="TotalTech.Views.LoginPage">
     <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource BaseBackgroundColor}">
+            <ScrollView>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*" />
+                        <RowDefinition Height="55*" />
+                        <RowDefinition Height="5*" />
+                    </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0"
+                                     HorizontalOptions="FillAndExpand" 
+                                     VerticalOptions="End">
+                            <ffimageloading:CachedImage HorizontalOptions="FillAndExpand" 
+                                VerticalOptions="End" WidthRequest="160" HeightRequest="230"
+                                Aspect="AspectFit" Source = "splash.png"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Margin="20"
+                                     HorizontalOptions="FillAndExpand" Spacing="10" Orientation="Vertical"
+                                     VerticalOptions="FillAndExpand">
+
+                            <Frame BorderColor="Black" BackgroundColor="Transparent" CornerRadius="5" Padding="1">
+                                <StackLayout Margin="0" Orientation="Horizontal" Padding="2" Spacing="5">
+                                    <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Start" WidthRequest="30" HeightRequest="30"
+                                DownsampleToViewSize="true" Aspect="AspectFit"
+                                Source = "user.svg">
+                                    <ffimageloadingsvg:SvgCachedImage.Transformations>
+                                         <fftransformations:TintTransformation HexColor="#000000" EnableSolidColor="true"/>
+                                    </ffimageloadingsvg:SvgCachedImage.Transformations>
+                                </ffimageloadingsvg:SvgCachedImage>
+                                    <Entry 
+                                    Text="{Binding UserName}" BackgroundColor="Transparent"
+                                    TextColor="Black" Placeholder="Email Address"
+                                    Keyboard="Text" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                    HeightRequest="40"/>
+                                </StackLayout>
+                            </Frame>
+                            
+                            <Frame BorderColor="Black" BackgroundColor="Transparent" CornerRadius="5" Padding="1">
+                                <StackLayout Margin="0" Orientation="Horizontal" Padding="2" Spacing="5">
+                                    <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Start" WidthRequest="30" HeightRequest="30"
+                                DownsampleToViewSize="true" Aspect="AspectFit"
+                                Source = "pwd.svg">
+                                    <ffimageloadingsvg:SvgCachedImage.Transformations>
+                                         <fftransformations:TintTransformation HexColor="#000000" EnableSolidColor="true"/>
+                                    </ffimageloadingsvg:SvgCachedImage.Transformations>
+                                </ffimageloadingsvg:SvgCachedImage>
+
+                                <Entry Text="{Binding Password}"
+                                    TextColor="Black"  Placeholder="Password"
+                                    Keyboard="Text"
+                                    IsPassword="True"
+                                    HeightRequest="40"/>
+                                 </StackLayout>
+                            </Frame>
+                            <Button CornerRadius="20"
+                                    Text="LOGIN" 
+                                    TextColor="{StaticResource BaseBackgroundColor}"
+                                    BackgroundColor="Black"
+                                    HeightRequest="50"
+                                    Margin="0,25,0,0"
+                                    Command="{Binding LoginCommand}"/>
+
+                        </StackLayout>
+                </Grid>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
