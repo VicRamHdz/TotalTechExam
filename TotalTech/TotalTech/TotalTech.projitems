@@ -55,6 +55,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Framework\BaseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\PersonService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\CacheHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\RootPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PersonDetailPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -63,5 +65,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />
     <Folder Include="$(MSBuildThisFileDirectory)Framework\" />
     <Folder Include="$(MSBuildThisFileDirectory)Storage\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
   </ItemGroup>
 </Project>

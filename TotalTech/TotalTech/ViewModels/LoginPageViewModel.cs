@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Prism.Navigation;
 using Prism.Services;
+using TotalTech.Controls;
 using TotalTech.Framework;
 using TotalTech.Services;
 using TotalTech.Storage;
@@ -64,7 +65,7 @@ namespace TotalTech.ViewModels
                 if (response.IsSuccess)
                 {
                     Settings.Token = response.Data.token;
-                    Application.Current.MainPage = new NavigationPage(new PersonPage());
+                    Application.Current.MainPage = new RootPage(new PersonPage());
                 }
                 else
                 {

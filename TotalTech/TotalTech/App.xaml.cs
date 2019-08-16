@@ -2,6 +2,7 @@
 using Akavache;
 using FFImageLoading.Svg.Forms;
 using Prism.Unity;
+using TotalTech.Controls;
 using TotalTech.Storage;
 using TotalTech.Views;
 using Xamarin.Forms;
@@ -26,11 +27,12 @@ namespace TotalTech
             if (string.IsNullOrEmpty(Settings.Token))
                 NavigationService.NavigateAsync("LoginPage");
             else
-                NavigationService.NavigateAsync("PersonPage");
+                NavigationService.NavigateAsync("RootPage/PersonPage");
         }
 
         protected override void RegisterTypes()
         {
+            Container.RegisterTypeForNavigation<RootPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<PersonPage>();
             Container.RegisterTypeForNavigation<PersonDetailPage>();

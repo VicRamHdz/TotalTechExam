@@ -22,6 +22,7 @@ namespace TotalTech.Droid
 
             base.OnCreate(savedInstanceState);
             CachedImageRenderer.Init(false);
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
 
             var config = new FFImageLoading.Config.Configuration()
             {

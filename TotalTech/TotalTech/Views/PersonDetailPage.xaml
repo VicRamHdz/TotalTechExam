@@ -1,5 +1,111 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TotalTech.Views.PersonDetailPage">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    Title="Doctor Details"
+    x:Name="doctorsPage"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="TotalTech.Views.PersonDetailPage">
     <ContentPage.Content>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="30*"/>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" ColumnSpacing="10" HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+
+                <ffimageloading:CachedImage Grid.Column="0" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center"
+                                            Source = "{Binding Person.picture.large}" WidthRequest="100" HeightRequest="100"/>
+
+                <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Person.fullname}" TextColor="Black" FontAttributes="Bold" FontSize="15" />
+                    <Label Text="{Binding Person.email}" TextColor="Green" FontSize="12" />
+                    <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Start" WidthRequest="10" HeightRequest="12" DownsampleToViewSize="true" Aspect="AspectFit"
+                                        Source = "star.svg"/>
+                    <Label Text="{Binding Person.rating}" TextColor="Gray" FontSize="14" />
+                </StackLayout>
+            </Grid>
+
+            <BoxView Color="Gray" HeightRequest="1" Grid.Row="1" HorizontalOptions="FillAndExpand" />
+
+            <StackLayout Orientation="Vertical" Grid.Row="2" Spacing="10" HorizontalOptions="StartAndExpand">
+                <Label Text="Contact information" FontAttributes="Bold" TextColor="Green" FontSize="15" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Address " TextColor="Black" FontAttributes="Bold" />
+                            <Span Text="{Binding Person.location.street}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="City " TextColor="Black" FontAttributes="Bold" />
+                            <Span Text="{Binding Person.location.city}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="State " TextColor="Black" FontAttributes="Bold" />
+                            <Span Text="{Binding Person.location.state}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Postal Code " TextColor="Black" FontAttributes="Bold" />
+                            <Span Text="{Binding Person.location.postcode}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Phone Number " TextColor="Black" FontAttributes="Bold" />
+                            <Span Text="{Binding Person.phone}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="3" Spacing="10" HorizontalOptions="FillAndExpand">
+                 <StackLayout Orientation="Horizontal" Spacing="5">
+                    <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Start" WidthRequest="10" HeightRequest="10" DownsampleToViewSize="true" Aspect="AspectFit"
+                    Source = "location.svg">
+                        <ffimageloadingsvg:SvgCachedImage.Transformations>
+                                <fftransformations:TintTransformation HexColor="#C8C8C8" EnableSolidColor="true"/>
+                        </ffimageloadingsvg:SvgCachedImage.Transformations>
+                    </ffimageloadingsvg:SvgCachedImage>
+                    <Label Text="Location" TextColor="Green" FontSize="15" />
+                 </StackLayout>
+
+                 <maps:Map x:Name="MapView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1">
+                 </maps:Map>
+            </StackLayout>
+
+            <Button CornerRadius="20" Grid.Row="4"
+                                    Text="CONTACT" 
+                                    TextColor="{StaticResource BaseBackgroundColor}"
+                                    BackgroundColor="Black"
+                                    HeightRequest="50"
+                                    Margin="0,25,0,0"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

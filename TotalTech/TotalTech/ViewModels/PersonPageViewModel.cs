@@ -10,6 +10,7 @@ using TotalTech.Framework;
 using TotalTech.Models;
 using TotalTech.Services;
 using TotalTech.Storage;
+using TotalTech.Views;
 using Xamarin.Forms;
 
 namespace TotalTech.ViewModels
@@ -25,11 +26,14 @@ namespace TotalTech.ViewModels
 
         PersonService service;
 
+        public Command OpenRowCommand { get; set; }
+
         public PersonPageViewModel(INavigationService navigationService, IPageDialogService dialogService)
         {
             _navigation = navigationService;
             _dialogService = dialogService;
             service = new PersonService();
+            OpenRowCommand = new Command<Persons>(async (p) => { await OnOpenRow(p); });
         }
 
         public async Task LoadPersons()
@@ -73,6 +77,13 @@ namespace TotalTech.ViewModels
                 }
                 item.rating = rating / 10;
             }
+        }
+
+        public async Task OnOpenRow(Persons person)
+        {
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.Add("person", person);
+            await _navigation.NavigateAsync("PersonDetailPage", parameters);
         }
     }
 }

@@ -27,6 +27,7 @@ namespace TotalTech.iOS
             global::Xamarin.Forms.Forms.Init();
 
             CachedImageRenderer.Init();
+            Xamarin.FormsMaps.Init();
 
             var config = new FFImageLoading.Config.Configuration()
             {
