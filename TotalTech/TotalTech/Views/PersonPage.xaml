@@ -46,8 +46,9 @@
                                     <Label Text="{Binding rating}" TextColor="Gray" FontSize="13" />
                                 </StackLayout>
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.OpenRowCommand, Source={x:Reference doctorsPage}}"
-                                                          CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                    <TapGestureRecognizer
+                                        Command="{Binding BindingContext.OpenRowCommand, Source={x:Reference doctorsPage}}"
+                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                                 </Grid.GestureRecognizers>
                             </Grid>
                             </Frame>
